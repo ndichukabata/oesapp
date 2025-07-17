@@ -4,13 +4,11 @@ export const currency: CurrencyType = '$'
 
 export const currentYear = new Date().getFullYear()
 
-export const appName = 'Inspinia'
-export const appTitle = 'INSPINIA - Responsive Bootstrap 5 Admin Dashboard'
+export const appName = 'OEMS'
+export const appTitle = 'Online Examination Management System'
 export const appDescription: string =
-  'Inspinia is the #1 best-selling admin dashboard template on WrapBootstrap. Perfect for building CRM, CMS, project management tools, and custom web apps with clean UI, responsive design, and powerful features.'
-
-export const author: string = 'WebAppLayers'
-export const authorWebsite: string = 'https://webapplayers.com/'
+'The Online Examination Management System for the Public Service Commission is a digital platform designed to streamline the administration, conduction, and evaluation of exams. It enables candidates to register, schedule exams, and access their results online.'
+export const author: string = 'Public Service Commission'
+export const authorWebsite: string = 'https://www.publicservice.go.ke/'
 export const authorContact: string = ''
-
 export const basePath: string = ''

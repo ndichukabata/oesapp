@@ -1,6 +1,8 @@
-import { FormControl, FormLabel } from 'react-bootstrap'
+import { FormControl, FormLabel, InputGroup } from 'react-bootstrap'
 import { TbLockPassword } from 'react-icons/tb'
-
+import InputGroupText from 'react-bootstrap/InputGroupText'
+import { TbEye, TbEyeClosed } from 'react-icons/tb'
+import { useState } from 'react'
 type PasswordInputProps = {
   password: string
   setPassword: (value: string) => void
@@ -35,7 +37,7 @@ const PasswordInputWithStrength = ({
 }: PasswordInputProps) => {
   const strength = calculatePasswordStrength(password)
   const strengthBars = new Array(4).fill(0)
-
+  const [passState, setPassState] = useState(false);
   return (
     <>
       {label && (
@@ -50,16 +52,25 @@ const PasswordInputWithStrength = ({
             <TbLockPassword className="text-muted fs-xl" />
           </span>
         )}
-        <FormControl
-          type="password"
-          name={name}
-          id={id}
-          placeholder={placeholder}
-          required
-          className={inputClassName}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <InputGroup>
+          <FormControl
+            type={passState ? "text" : "password"}
+            name={name}
+            id={id}
+            placeholder={placeholder}
+            required
+            className={inputClassName}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputGroupText className="password-eye" onClick={(ev) => {
+            ev.preventDefault();
+            setPassState(!passState);
+          }}>
+            <TbEye className={passState ? "d-block" : "d-none"} />
+            <TbEyeClosed className={passState ? "d-none" : "d-block"} />
+          </InputGroupText>
+        </InputGroup>
       </div>
 
       <div className="password-bar my-2">

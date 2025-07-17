@@ -5,11 +5,11 @@ type PageMetaDataProps = {
 }
 
 const defaultPageMetaData: PageMetaDataProps = {
-  title: 'Inspinia React',
+  title: 'Online Examination Management System',
   description:
-    'Inspinia is the #1 best-selling admin dashboard template on WrapBootstrap. Perfect for building CRM, CMS, project management tools, and custom web apps with clean UI, responsive design, and powerful features.',
+    'The Online Examination Management System for the Public Service Commission is a digital platform designed to streamline the administration, conduction, and evaluation of exams. It enables candidates to register, schedule exams, and access their results online.',
   keywords:
-    'Inspinia, admin dashboard, WrapBootstrap, HTML template, Bootstrap admin, CRM template, CMS template, responsive admin, web app UI, admin theme, best admin template',
+    'Online, Examination, Management, System',
 }
 
 const PageMetaData = ({ title, description = defaultPageMetaData.description, keywords = defaultPageMetaData.keywords }: PageMetaDataProps) => {
