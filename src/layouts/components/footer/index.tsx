@@ -11,7 +11,7 @@ const Footer = () => {
           </Col>
           <Col md={6}>
             <div className="text-md-end d-none d-md-block">
-              10GB of <span className="fw-bold">250GB</span> Free.
+           
             </div>
           </Col>
         </Row>

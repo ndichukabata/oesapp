@@ -4,6 +4,13 @@ import { useContext, useDebugValue } from 'react';
 
 // Define the shape of your auth object
 interface Auth {
+    refreshToken: string;
+    tokenExpiration: string;
+    usertype: string;
+    active: boolean;
+    firstname: string;
+    lastname: string;
+    roles: never[];
     otpRequired: string;
     token: any;
     accessToken: any;

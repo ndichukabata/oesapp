@@ -20,6 +20,9 @@ const Auth3LockScreen = lazy(() => import('@/views/auth/lock-screen'))
 const Auth3SuccessMail = lazy(() => import('@/views/auth/success-mail'))
 const Auth3DeleteAccount = lazy(() => import('@/views/auth/delete-account'))
 
+
+const Profile = lazy(() => import('@/views/profile/profile'))
+
 // Error
 const Error400 = lazy(() => import('@/views/error/400'))
 const Error401 = lazy(() => import('@/views/error/401'))
@@ -32,12 +35,12 @@ const Maintenance = lazy(() => import('@/views/other-pages/maintenance'))
 
 
 const authRoutes: RouteObject[] = [
-  
+
   { path: '/auth/sign-in', element: <Auth3SignIn /> },
   { path: '/auth/sign-up', element: <Auth3SignUp /> },
   { path: '/auth/reset-password', element: <Auth3ResetPassword /> },
   { path: '/auth/new-password', element: <Auth3NewPassword /> },
-  { path: '/auth/two-factor', element: <Auth3TwoFactor /> },
+  { path: '/auth/two-factor', element: <PrivateRoute><Auth3TwoFactor /></PrivateRoute> },
   { path: '/auth/lock-screen', element: <Auth3LockScreen /> },
   { path: '/auth/success-mail', element: <Auth3SuccessMail /> },
   { path: '/auth/delete-account', element: <Auth3DeleteAccount /> },
@@ -52,11 +55,15 @@ const errorRoutes: RouteObject[] = [
   { path: '/error/500', element: <Error500 /> },
 ]
 
-const otherPagesRoutes: RouteObject[] = [{ path: '/maintenance', element: <Maintenance /> }]
+const otherPagesRoutes: RouteObject[] = [
+  { path: '/maintenance', element: <Maintenance /> },
+
+]
 
 const dashboardRoutes: RouteObject[] = [{ path: '/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute> }]
 
 const landingRoute: RouteObject[] = [{ path: '/landing', element: <Landing /> }]
+
 
 
 const allRoutes: RouteObject[] = [
@@ -67,6 +74,7 @@ const allRoutes: RouteObject[] = [
         path: '/',
         element: <Navigate to="/dashboard" replace />,
       },
+     { path: '/profile', element: <PrivateRoute><Profile /></PrivateRoute> },
       ...dashboardRoutes,
     ],
   },

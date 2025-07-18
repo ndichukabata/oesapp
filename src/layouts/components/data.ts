@@ -49,33 +49,19 @@ export const userDropdownItems: UserDropdownItemType[] = [
     icon: TbBellRinging,
     url: '#',
   },
-  {
-    label: 'Balance: $985.25',
-    icon: TbCreditCard,
-    url: '#',
-  },
-  {
-    label: 'Account Settings',
-    icon: TbSettings2,
-    url: '#',
-  },
-  {
-    label: 'Support Center',
-    icon: TbHeadset,
-    url: '#',
-  },
-  {
+  
+   {
     isDivider: true,
   },
   {
     label: 'Lock Screen',
     icon: TbLock,
-    url: '/auth-1/lock-screen',
+    url: '/auth/lock-screen',
   },
   {
     label: 'Log Out',
     icon: TbLogout2,
-    url: '#',
+    url: '/auth/sign-in',
     class: 'text-danger fw-semibold',
   },
 ]

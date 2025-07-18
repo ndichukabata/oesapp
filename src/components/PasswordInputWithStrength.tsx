@@ -3,9 +3,10 @@ import { TbLockPassword } from 'react-icons/tb'
 import InputGroupText from 'react-bootstrap/InputGroupText'
 import { TbEye, TbEyeClosed } from 'react-icons/tb'
 import { useState } from 'react'
+ 
 type PasswordInputProps = {
   password: string
-  setPassword: (value: string) => void
+  setPassword: (value: string, strength: number) => void
   showIcon?: boolean
   id?: string
   name?: string
@@ -21,6 +22,7 @@ const calculatePasswordStrength = (password: string): number => {
   if (/[A-Z]/.test(password)) strength++
   if (/\d/.test(password)) strength++
   if (/[\W_]/.test(password)) strength++
+         
   return strength
 }
 
@@ -38,6 +40,7 @@ const PasswordInputWithStrength = ({
   const strength = calculatePasswordStrength(password)
   const strengthBars = new Array(4).fill(0)
   const [passState, setPassState] = useState(false);
+
   return (
     <>
       {label && (
@@ -58,10 +61,11 @@ const PasswordInputWithStrength = ({
             name={name}
             id={id}
             placeholder={placeholder}
-            required
             className={inputClassName}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {setPassword(e.target.value, calculatePasswordStrength(e.target.value))
+            }}
+            
           />
           <InputGroupText className="password-eye" onClick={(ev) => {
             ev.preventDefault();

@@ -17,7 +17,7 @@ const PageBreadcrumb = ({ title, subtitle }: PageBreadcrumbProps) => {
         </div>
         <div className="text-end">
           <div className="breadcrumb m-0 py-0 d-flex align-items-center gap-1">
-            <BreadcrumbItem>Inspinia</BreadcrumbItem> <TbChevronRight />
+            <BreadcrumbItem>EMS</BreadcrumbItem> <TbChevronRight />
             {subtitle && (
               <>
                 <BreadcrumbItem>{subtitle}</BreadcrumbItem> <TbChevronRight />

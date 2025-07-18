@@ -4,17 +4,20 @@ import { Link } from 'react-router'
 import { Fragment } from 'react'
 import { Dropdown, DropdownDivider, DropdownItem, DropdownMenu, DropdownToggle } from 'react-bootstrap'
 import { TbChevronDown } from 'react-icons/tb'
-
+import useAuth from "../../../../api/useAuth";
 import user2 from '@/assets/images/users/user-2.jpg'
 
 const UserProfile = () => {
+const { auth } = useAuth();
+console.log(auth);
+
   return (
     <div className="topbar-item nav-user">
       <Dropdown align="end">
         <DropdownToggle as={'a'} className="topbar-link dropdown-toggle drop-arrow-none px-2">
           <Image src={user2} width="32" height="32" className="rounded-circle me-lg-2 d-flex" alt="user-image" />
           <div className="d-lg-flex align-items-center gap-1 d-none">
-            <h5 className="my-0">Damian D.</h5>
+            <h5 className="my-0">{auth?.firstname }</h5>
             <TbChevronDown className="align-middle" />
           </div>
         </DropdownToggle>

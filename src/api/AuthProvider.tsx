@@ -1,3 +1,4 @@
+ 
 import { createContext, useState } from "react";
 
 
@@ -20,11 +21,10 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    console.log(localStorage.getItem('eostoken'));
-    
+  
+
     const token = localStorage.getItem('eostoken')? localStorage.getItem('eostoken'): null;
 
-    console.log(token);
     const isAuthenticated = !!localStorage.getItem('eostoken');
     
     const [auth, setAuth] = useState(JSON.parse(token ?? '{}'));

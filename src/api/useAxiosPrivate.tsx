@@ -2,18 +2,18 @@ import { axiosPrivate } from "./axios";
 import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken"
 import useAuth from "./useAuth";
-
+import { useNavigate } from "react-router-dom";
 const useAxiosPrivate = () => {
+      const navigate = useNavigate();
     const refresh = useRefreshToken();
     const { auth } = useAuth();
     useEffect(() => {
         if (auth == null) {
             console.log('auth is null');
 
-            // navigate(`${process.env.PUBLIC_URL}/login`);
+             navigate('/auth/sign-in');
             return;
         }
-
 
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
@@ -36,13 +36,22 @@ const useAxiosPrivate = () => {
                     return axiosPrivate(prevRequest);
                 }
                 // && !prevRequest?.sent
-                console.log(!prevRequest?.sent);
-
+             
 
                 if (error?.response?.status === 401 && !prevRequest?.sent) {
                     prevRequest.sent = true;
-                    // const newAccessToken = await refresh(auth);
-                    //prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                     const newAccessToken = await refresh({
+                        accessToken: auth?.accessToken ?? "",
+                        refreshToken: auth?.refreshToken ?? "",
+                        tokenExpiration: auth?.tokenExpiration ?? "",
+                        usertype: auth?.usertype ?? "",
+                        active: auth?.active ?? false,
+                        firstname: auth?.firstname ?? "",
+                        lastname: auth?.lastname ?? "",
+                        username: auth?.username ?? "",
+                        roles: auth?.roles ?? []
+                    });
+                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
                 }
                 return Promise.reject(error);
